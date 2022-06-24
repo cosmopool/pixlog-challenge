@@ -18,14 +18,14 @@ void main() async {
   });
 
   test('Should return a list of resources', () async {
-    when(repository.call).thenAnswer((_) async => entityList);
+    when(repository.fetch).thenAnswer((_) async => entityList);
     final response = await usecase();
     expect(response.runtimeType, List<ResourceEntity>);
   });
 
   test('Should call repository fetch method once', () async {
-    when(repository.call).thenAnswer((_) async => entityList);
+    when(repository.fetch).thenAnswer((_) async => entityList);
     await usecase();
-    verify(() => repository()).called(1);
+    verify(() => repository.fetch()).called(1);
   });
 }

@@ -7,6 +7,6 @@ class GetResourcesUsecase {
   GetResourcesUsecase(this._repository);
 
   Future<List<ResourceEntity>> call() async {
-    return await _repository();
+    return await _repository.fetch();
   }
 }
