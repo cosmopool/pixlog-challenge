@@ -11,7 +11,7 @@ import '../../../../../stubs/resources_response.dart';
 
 class MockHttpClient extends Mock implements IHttpClientService {}
 
-late ResourcesDatasourceInterface datasource;
+late IResourcesDatasource datasource;
 late IHttpClientService httpClient;
 
 final httpResponse = HttpResponse(statusCode: 200, data: resourcesResponse);

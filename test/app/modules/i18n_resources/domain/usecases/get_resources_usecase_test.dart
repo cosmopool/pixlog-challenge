@@ -6,9 +6,9 @@ import 'package:pixlog_challenge/app/modules/i18n_resources/domain/usecases/get_
 
 import '../../../../../stubs/entity_list.dart';
 
-class MockResourcesRepository extends Mock implements ResourcesRepositoryInterface {}
+class MockResourcesRepository extends Mock implements IResourcesRepository {}
 
-late ResourcesRepositoryInterface repository;
+late IResourcesRepository repository;
 late GetResourcesUsecase usecase;
 
 void main() async {

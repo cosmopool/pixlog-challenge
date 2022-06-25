@@ -2,7 +2,7 @@ import 'package:pixlog_challenge/app/modules/i18n_resources/domain/entity/resour
 import 'package:pixlog_challenge/app/modules/i18n_resources/domain/interfaces/resources_repository_interface.dart';
 
 class GetResourcesUsecase {
-  final ResourcesRepositoryInterface _repository;
+  final IResourcesRepository _repository;
 
   GetResourcesUsecase(this._repository);
 

@@ -3,7 +3,7 @@ import 'package:pixlog_challenge/app/modules/i18n_resources/domain/entity/resour
 import 'package:pixlog_challenge/app/modules/i18n_resources/external/mappers/resources_mapper.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/infra/interfaces/resources_datasource_interface.dart';
 
-class RemoteDatasource implements ResourcesDatasourceInterface {
+class RemoteDatasource implements IResourcesDatasource {
   final IHttpClientService _httpClient;
   final url = "http://url";
 

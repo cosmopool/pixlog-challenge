@@ -8,10 +8,10 @@ import 'package:pixlog_challenge/app/modules/i18n_resources/infra/repositories/r
 import '../../../../../stubs/entity_list.dart';
 
 
-class MockResourcesDatasource extends Mock implements ResourcesDatasourceInterface {}
+class MockResourcesDatasource extends Mock implements IResourcesDatasource {}
 
-late ResourcesRepositoryInterface repository;
-late ResourcesDatasourceInterface datasource;
+late IResourcesRepository repository;
+late IResourcesDatasource datasource;
 
 void main() async {
   setUp(() async {
