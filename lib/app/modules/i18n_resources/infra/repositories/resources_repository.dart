@@ -9,6 +9,6 @@ class ResourcesRepository implements ResourcesRepositoryInterface {
 
   @override
   Future<List<ResourceEntity>> fetch() async {
-    return await _datasource();
+    return await _datasource.fetch();
   }
 }

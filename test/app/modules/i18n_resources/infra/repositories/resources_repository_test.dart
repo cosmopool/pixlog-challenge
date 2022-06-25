@@ -18,7 +18,7 @@ void main() async {
     datasource = MockResourcesDatasource();
     repository = ResourcesRepository(datasource);
 
-    when(datasource.call).thenAnswer((_) async => entityList);
+    when(datasource.fetch).thenAnswer((_) async => entityList);
   });
 
   test('Should return a list of resources', () async {
@@ -28,6 +28,6 @@ void main() async {
 
   test('Should call datasource fetch method once', () async {
     await repository.fetch();
-    verify(() => datasource()).called(1);
+    verify(() => datasource.fetch()).called(1);
   });
 }
