@@ -1,4 +1,6 @@
-class ResourceEntity {
+import 'package:equatable/equatable.dart';
+
+class ResourceEntity extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String resourceId;
@@ -6,7 +8,7 @@ class ResourceEntity {
   final String value;
   final String languageId;
 
-  ResourceEntity({
+  const ResourceEntity({
     required this.createdAt,
     required this.updatedAt,
     required this.resourceId,
@@ -14,4 +16,7 @@ class ResourceEntity {
     required this.value,
     required this.languageId,
   });
+
+  @override
+  List<Object?> get props => [createdAt, updatedAt, resourceId, moduleId, value, languageId];
 }
