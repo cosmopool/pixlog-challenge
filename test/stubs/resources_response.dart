@@ -1,4 +1,4 @@
-List resourcesResponse = [
+final List<Map> resourcesResponse = [
   {
     "resource": {
       "created_at": "2021-08-14T20:49:32Z",
