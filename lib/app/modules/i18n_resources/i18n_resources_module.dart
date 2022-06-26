@@ -15,7 +15,7 @@ class I18nResoucesModule extends Module {
   @override
   List<Bind> get binds => [
         // datasources
-        Bind.lazySingleton((i) => RemoteDatasource(i())),
+        Bind.lazySingleton((i) => RemoteDatasource(i(), url)),
         // repositories
         Bind.lazySingleton((i) => ResourcesRepository(i())),
         // usecases
