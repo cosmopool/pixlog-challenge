@@ -5,9 +5,9 @@ import 'package:pixlog_challenge/app/modules/i18n_resources/infra/interfaces/res
 
 class RemoteDatasource implements IResourcesDatasource {
   final IHttpClientService _httpClient;
-  final url = "http://portal.greenmilesoftware.com/get_resources_since";
+  final String url;
 
-  RemoteDatasource(this._httpClient);
+  RemoteDatasource(this._httpClient, this.url);
 
   @override
   Future<List<ResourceEntity>> fetch() async {
