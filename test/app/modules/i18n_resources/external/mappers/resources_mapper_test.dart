@@ -36,4 +36,38 @@ void main() async {
     final result = ResourcesMapper.fromList(resourcesResponse);
     expect(result.length, resourcesResponse.length);
   });
+
+  test('Should return default date when resource map createdAt key is null', () async {
+    final list = [
+      {
+        "resource": {
+          /* "created_at": "2021-08-14T20:49:32Z", */
+          "updated_at": "2021-08-14T20:49:32Z",
+          "resource_id": "textfile.combineOrders",
+          "module_id": "GreenMileTrack",
+          "value": "Merge orders in the same stop",
+          "language_id": "en-g"
+        }
+      },
+    ];
+    final result = ResourcesMapper.fromList(list);
+    expect(result[0].createdAt, DateTime.parse("1900-01-01T00:00:00Z"));
+  });
+
+  test('Should return default date when resource map updatedAt key is null', () async {
+    final list = [
+      {
+        "resource": {
+          "created_at": "2021-08-14T20:49:32Z",
+          /* "updated_at": "2021-08-14T20:49:32Z", */
+          "resource_id": "textfile.combineOrders",
+          "module_id": "GreenMileTrack",
+          "value": "Merge orders in the same stop",
+          "language_id": "en-g"
+        }
+      },
+    ];
+    final result = ResourcesMapper.fromList(list);
+    expect(result[0].updatedAt, DateTime.parse("1900-01-01T00:00:00Z"));
+  });
 }
