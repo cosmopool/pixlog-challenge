@@ -100,4 +100,24 @@ final List<Map> resourcesResponse = [
       "language_id": "th"
     }
   },
+  {
+    "resource": {
+      "created_at": "2021-01-19T13:12:45Z",
+      "updated_at": "2021-01-19T13:12:45Z",
+      "resource_id": "users.changePasswordHeader.label",
+      "module_id": "RedMileTrack",
+      "value": "รีเซ็ตรหัสผ่านของคุณ",
+      "language_id": "th"
+    }
+  },
+  {
+    "resource": {
+      "created_at": "2021-01-19T13:12:44Z",
+      "updated_at": "2021-01-19T13:12:44Z",
+      "resource_id": "Greenmile.Grid.Button.deleteSelected",
+      "module_id": "RedMileTrack",
+      "value": "Seleccione al menos un elemento para eliminar",
+      "language_id": "es"
+    }
+  },
 ];
