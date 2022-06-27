@@ -37,7 +37,7 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     // filter by value entities already filtered by languageId and moduleId only if valueFilter is not empty
     final byValue = _isInvalidString(valueFilter)
         ? byModule
-        : byModule.where((e) => e.value.contains(valueFilter!)).toList();
+        : byModule.where((e) => e.value.toLowerCase().contains(valueFilter!)).toList();
 
     final filteredList = byValue;
 
