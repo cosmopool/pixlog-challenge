@@ -1,0 +1,2 @@
+class NoInternetConnection extends Error {
+}

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:pixlog_challenge/app/modules/core/errors.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/domain/entity/resource_entity.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/domain/usecases/get_resources_usecase.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/ui/bloc/resource_events.dart';
@@ -85,8 +86,10 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
           modules: modules,
         ),
       );
+  } on NoInternetConnection {
+      emit(state.copyWith(status: ResourceStatus.failure, error: "No internet connection.\nTry again later."));
     } catch (_) {
-      emit(state.copyWith(status: ResourceStatus.failure));
+      emit(state.copyWith(status: ResourceStatus.failure, error: "Something went wrong.\nCould not fetch resources!"));
     }
   }
 }

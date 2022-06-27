@@ -23,9 +23,17 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_alt),
-            onPressed: () => (bloc.state.status == ResourceStatus.success)
-                ? filterWidgetCubit.toggleVisibility()
-                : print("Data still loading, please wait!"),
+            onPressed: () {
+              // first we verify if data has loaded to only then show the filters
+              if (bloc.state.status == ResourceStatus.success) {
+                filterWidgetCubit.toggleVisibility();
+              } else {
+                const snack = SnackBar(
+                  content: Text("Data still loading, please try again later!"),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snack);
+              }
+            },
           )
         ],
       ),
@@ -40,7 +48,19 @@ class HomePage extends StatelessWidget {
                   // On failure
                   // When the http request fails
                   case ResourceStatus.failure:
-                    return const Center(child: Text('failed to fetch posts'));
+                    return Center(
+                        child: Column(
+                      children: [
+                        Text(state.error),
+                        ElevatedButton(
+                          onPressed: () => bloc.add(ResourceFetchedEvent()),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text("Try again"),
+                          ),
+                        )
+                      ],
+                    ));
 
                   // On success
                   // When the http request return the list of resources

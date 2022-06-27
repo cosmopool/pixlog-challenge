@@ -9,6 +9,7 @@ class ResourceState extends Equatable {
   final List<ResourceEntity> cache;
   final List<String> languages;
   final List<String> modules;
+  final String error;
 
   const ResourceState({
     this.status = ResourceStatus.initial,
@@ -16,6 +17,7 @@ class ResourceState extends Equatable {
     this.cache = const <ResourceEntity>[],
     this.languages = const <String>[],
     this.modules = const <String>[],
+    this.error = "",
   });
 
   ResourceState copyWith({
@@ -24,6 +26,7 @@ class ResourceState extends Equatable {
     List<ResourceEntity>? cache,
     List<String>? languages,
     List<String>? modules,
+    String? error,
   }) {
     return ResourceState(
       status: status ?? this.status,
@@ -31,6 +34,7 @@ class ResourceState extends Equatable {
       cache: cache ?? this.cache,
       languages: languages ?? this.languages,
       modules: modules ?? this.modules,
+      error: error ?? this.error,
     );
   }
 
@@ -40,5 +44,5 @@ class ResourceState extends Equatable {
   }
 
   @override
-  List<Object> get props => [status, resources];
+  List<Object> get props => [status, resources, cache, languages, modules, error];
 }
