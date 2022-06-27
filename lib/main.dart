@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 import 'package:pixlog_challenge/app/app_module.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox("resourcesBox");
+
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
     print('${record.level.name}: ${record.time}: ${record.message}');

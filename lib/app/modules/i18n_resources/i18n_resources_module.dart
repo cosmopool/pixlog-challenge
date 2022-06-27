@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:hive/hive.dart';
 import 'package:pixlog_challenge/app/modules/core/core_module.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/domain/usecases/get_resources_usecase.dart';
+import 'package:pixlog_challenge/app/modules/i18n_resources/external/local/hive_datasource.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/external/remote/remote_datasource.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/infra/repositories/resources_repository.dart';
 import 'package:pixlog_challenge/app/modules/i18n_resources/ui/bloc/dropdown_cubit.dart';
@@ -17,9 +19,10 @@ class I18nResoucesModule extends Module {
   @override
   List<Bind> get binds => [
         // datasources
+        Bind.lazySingleton((i) => HiveDatasource(Hive.box("resourcesBox"))),
         Bind.lazySingleton((i) => RemoteDatasource(i(), url)),
         // repositories
-        Bind.lazySingleton((i) => ResourcesRepository(i())),
+        Bind.lazySingleton((i) => ResourcesRepository(i(), i())),
         // usecases
         Bind.lazySingleton((i) => GetResourcesUsecase(i())),
         // ui
