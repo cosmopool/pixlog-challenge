@@ -23,15 +23,16 @@ class FilterDropdownMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = Modular.get<DropdownValueCubit>();
+    final width = MediaQuery.of(context).size.width;
 
     return BlocBuilder<DropdownValueCubit, DropdownState>(
       bloc: cubit,
       builder: (context, state) => Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(20),
-            child: Text("Filter by language"),
+          Padding(
+            padding: EdgeInsets.only(left: width * .1, right: 20, top: 20, bottom: 20),
+            child: Text(text),
           ),
           DropdownButton(
             value: (value == "") ? items.first : value,

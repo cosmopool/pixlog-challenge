@@ -15,6 +15,7 @@ class FilterWidget extends StatelessWidget {
     final resourceBloc = Modular.get<ResourceBloc>();
     final filterCubit = Modular.get<FilterCubit>();
     final cubit = Modular.get<DropdownValueCubit>();
+    final width = MediaQuery.of(context).size.width;
 
     return BlocBuilder<FilterCubit, bool>(
       bloc: filterCubit,
@@ -58,12 +59,30 @@ class FilterWidget extends StatelessWidget {
               }
             },
           ),
-          ElevatedButton(
-            child: const Text("Clean filters"),
-            onPressed: () {
-              cubit.cleanFilters();
-              resourceBloc.add(ResourceFilterEvent());
-            },
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * .1),
+            child: TextField(
+              decoration: const InputDecoration(
+                hintText: 'value',
+              ),
+              onChanged: (String filter) => resourceBloc.add(
+                ResourceFilterEvent(
+                  moduleFilter: cubit.state.module,
+                  languageFilter: cubit.state.language,
+                  valueFilter: filter,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              child: const Text("Clean filters"),
+              onPressed: () {
+                cubit.cleanFilters();
+                resourceBloc.add(ResourceFilterEvent());
+              },
+            ),
           ),
         ]),
       ),

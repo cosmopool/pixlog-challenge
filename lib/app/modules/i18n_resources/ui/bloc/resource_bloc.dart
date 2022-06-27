@@ -21,6 +21,7 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     final cache = state.cache;
     final languageFilter = event.languageFilter;
     final moduleFilter = event.moduleFilter;
+    final valueFilter = event.valueFilter;
 
     // filter all entities by languageId only if languageFilter is not empty
     final byLanguage = _isInvalidString(languageFilter)
@@ -32,7 +33,12 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
         ? byLanguage
         : byLanguage.where((e) => e.moduleId == moduleFilter).toList();
 
-    final filteredList = byModule;
+    // filter by value entities already filtered by languageId and moduleId only if valueFilter is not empty
+    final byValue = _isInvalidString(valueFilter)
+        ? byModule
+        : byModule.where((e) => e.value.contains(valueFilter!)).toList();
+
+    final filteredList = byValue;
 
     emit(state.copyWith(
       status: ResourceStatus.success,

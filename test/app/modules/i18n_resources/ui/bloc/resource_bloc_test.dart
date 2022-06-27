@@ -90,4 +90,71 @@ void main() async {
       )
     ],
   );
+
+  blocTest(
+    'Should return a list with resources with values that contains "cc"',
+    build: () => resourceBloc,
+    seed: () => ResourceState(
+      status: ResourceStatus.success,
+      resources: listOfEntities,
+      cache: listOfEntities,
+    ),
+    act: (ResourceBloc bloc) => bloc.add(
+      ResourceFilterEvent(
+        valueFilter: "cc",
+      ),
+    ),
+    expect: () => [
+      ResourceState(
+        status: ResourceStatus.success,
+        resources: [listOfEntities[5], listOfEntities[8], listOfEntities[11]],
+      )
+    ],
+  );
+
+  blocTest(
+    'Should return a list with resources filtered by all filters',
+    build: () => resourceBloc,
+    seed: () => ResourceState(
+      status: ResourceStatus.success,
+      resources: listOfEntities,
+      cache: listOfEntities,
+    ),
+    act: (ResourceBloc bloc) => bloc.add(
+      ResourceFilterEvent(
+        languageFilter: "es",
+        moduleFilter: "RedMileTrack",
+        valueFilter: "cc",
+      ),
+    ),
+    expect: () => [
+      ResourceState(
+        status: ResourceStatus.success,
+        resources: [listOfEntities[11]],
+      )
+    ],
+  );
+
+  blocTest(
+    'Should return no resource',
+    build: () => resourceBloc,
+    seed: () => ResourceState(
+      status: ResourceStatus.success,
+      resources: listOfEntities,
+      cache: listOfEntities,
+    ),
+    act: (ResourceBloc bloc) => bloc.add(
+      ResourceFilterEvent(
+        languageFilter: "es",
+        moduleFilter: "RedMileTrack",
+        valueFilter: "asdfasdfasdfasdf",
+      ),
+    ),
+    expect: () => [
+      const ResourceState(
+        status: ResourceStatus.success,
+        resources: [],
+      )
+    ],
+  );
 }
