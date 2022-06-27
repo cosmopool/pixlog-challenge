@@ -70,4 +70,16 @@ void main() async {
     final result = ResourcesMapper.fromList(list);
     expect(result[0].updatedAt, DateTime.parse("1900-01-01T00:00:00Z"));
   });
+
+  test('Should return a map', () async {
+    final entityList = ResourcesMapper.fromList([resourcesResponse[0]]);
+    final map = ResourcesMapper.toMap(entityList[0]);
+    expect(map, resourcesResponse[0]);
+  });
+
+  test('Should return a list of maps', () async {
+    final entityList = ResourcesMapper.fromList(resourcesResponse);
+    final mapList = ResourcesMapper.toMapList(entityList);
+    expect(mapList, resourcesResponse);
+  });
 }
