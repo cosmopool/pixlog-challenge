@@ -44,5 +44,5 @@ class ResourceState extends Equatable {
   }
 
   @override
-  List<Object> get props => [status, resources, cache, languages, modules, error];
+  List<Object> get props => [status, resources, error];
 }
