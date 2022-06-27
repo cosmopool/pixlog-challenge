@@ -13,6 +13,8 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     on<ResourceFilterEvent>(_filterResources);
   }
 
+  /// Returns true if a string is null or empty
+  /// or false, otherwise.
   bool _isInvalidString(String? string) => (string == null || string.isEmpty);
 
   void _filterResources(
@@ -47,6 +49,7 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     ));
   }
 
+  /// Returns a list with a single instance of all the resources languages
   List<String> _getLanguages(List<ResourceEntity> resources) {
     List<String> list = [];
 
@@ -58,6 +61,7 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     return list;
   }
 
+  /// Returns a list with a single instance of all the resources modules
   List<String> _getModules(List<ResourceEntity> resources) {
     List<String> list = [];
 
