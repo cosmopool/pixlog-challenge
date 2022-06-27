@@ -70,12 +70,20 @@ class HomePage extends StatelessWidget {
                       itemBuilder: ((_, index) {
                         final resource = state.resources[index];
 
-                        return ListTile(
-                          leading: Text(resource.languageId),
-                          title: Text(resource.resourceId),
-                          trailing: Text(resource.updatedAt.toString()),
-                          subtitle: Text(resource.value),
-                          isThreeLine: true,
+                        return Card(
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Text(resource.languageId),
+                                title: Text(resource.resourceId),
+                              ),
+                              ListTile(
+                                leading: const SizedBox(width: 5),
+                                title: Text(resource.value),
+                                subtitle: Text(resource.updatedAt.toString()),
+                              ),
+                            ],
+                          ),
                         );
                       }),
                     );
