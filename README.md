@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/cosmopool/pixlog-challenge/branch/main/graph/badge.svg?token=NWVIKT579Z)](https://codecov.io/gh/cosmopool/pixlog-challenge)
+
 # Como Utilizar
 
 Assim que o aplicativo abre ele já começa a carregar os recursos de tradução, é só esperar 😄.
