@@ -1,6 +1,6 @@
 # Como Utilizar
 
-Assim que o aplicativo abre ele já começa a carregar os recursos de tradução, é só esperar :).
+Assim que o aplicativo abre ele já começa a carregar os recursos de tradução, é só esperar 😄.
 Quando a lista de recursos estiver carregada já é possível abrir os filtros (é só clicar no ícone de funil no canto superior direito da tela).
 Assim que clicar no ícone, os seguintes campos aparecerão:
 
