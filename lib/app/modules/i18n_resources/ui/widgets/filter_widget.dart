@@ -27,8 +27,7 @@ class FilterWidget extends StatelessWidget {
         child: Column(children: [
           FilterDropdownMenu(
             value: cubit.state.language,
-            items: resourceBloc.state.languages,
-            bloc: resourceBloc,
+            items: resourceBloc.state.languages.isNotEmpty ? resourceBloc.state.languages : [''],            bloc: resourceBloc,
             text: "Filter by language:",
             onChanged: (String? lang) {
               if (lang != null) {
@@ -44,7 +43,7 @@ class FilterWidget extends StatelessWidget {
           ),
           FilterDropdownMenu(
             value: cubit.state.module,
-            items: resourceBloc.state.modules,
+            items: resourceBloc.state.modules.isNotEmpty ? resourceBloc.state.modules : [''],
             bloc: resourceBloc,
             text: "Filter by module:",
             onChanged: (String? module) {
