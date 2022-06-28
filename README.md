@@ -31,5 +31,5 @@ Assim que clicar no ícone, os seguintes campos aparecerão:
 
 ## Padrão de código
 
-Foi utilizado o Clean Dart, padrão que segue todas as guidelines da Clean Architecture e escrito testes para garantir a qualidade do código.
+Foi utilizado o Clean Dart, padrão que segue todas as guidelines da Clean Architecture e escrito testes (90.2% de coverage) para garantir a qualidade do código.
 
