@@ -23,7 +23,7 @@ class ResourcesRepository implements IResourcesRepository {
     } else {
       log.info("[REPO] no connection with internet, going for cache...");
       final cacheList = await _cache.fetch();
-      if (cacheList == []) throw NoInternetConnection();
+      if (cacheList.isEmpty) throw NoInternetConnection();
       return cacheList;
     }
   }

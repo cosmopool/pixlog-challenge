@@ -48,8 +48,8 @@ class HomePage extends StatelessWidget {
                   // On failure
                   // When the http request fails
                   case ResourceStatus.failure:
-                    return Center(
-                        child: Column(
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(state.error),
                         ElevatedButton(
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                           ),
                         )
                       ],
-                    ));
+                    );
 
                   // On success
                   // When the http request return the list of resources
