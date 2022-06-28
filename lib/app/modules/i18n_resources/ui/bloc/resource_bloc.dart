@@ -77,6 +77,7 @@ class ResourceBloc extends Bloc<ResourceEvent, ResourceState> {
     ResourceFetchedEvent event,
     Emitter<ResourceState> emit,
   ) async {
+      emit(state.copyWith(status: ResourceStatus.loading));
     try {
       final resources = await _fetchUsecase();
       final languages = _getLanguages(resources);

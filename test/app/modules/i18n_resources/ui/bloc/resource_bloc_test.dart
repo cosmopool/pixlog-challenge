@@ -29,7 +29,8 @@ void main() async {
     },
     act: (ResourceBloc bloc) => bloc.add(ResourceFetchedEvent()),
     expect: () => [
-      ResourceState(status: ResourceStatus.success, resources: listOfEntities)
+      const ResourceState(status: ResourceStatus.loading, resources: []),
+      ResourceState(status: ResourceStatus.success, resources: listOfEntities),
     ],
   );
 
